@@ -1,108 +1,113 @@
 <p align="center">
-  <img src="website/assets/logo.png" width="200" alt="Aquila Logo">
+  <img src="website/assets/logo.png" width="250" alt="Aquila Logo">
 </p>
 
-# 🦅 Aquila: El Lenguaje Depredador de Python
+# 🦅 Aquila: El Ecosistema Depredador de Software
 
 <p align="center">
   <img src="https://img.shields.io/badge/Versión-2.1-f3c75f?style=for-the-badge" alt="Version">
-  <img src="https://img.shields.io/badge/Core-Rust-black?style=for-the-badge&logo=rust" alt="Rust">
-  <img src="https://img.shields.io/badge/IA-Nativa-3b82f6?style=for-the-badge" alt="AI Native">
-  <img src="https://img.shields.io/badge/Licencia-GPL_v3-red?style=for-the-badge" alt="GPL v3">
+  <img src="https://img.shields.io/badge/Núcleo-Rust_1.75+-black?style=for-the-badge&logo=rust" alt="Rust">
+  <img src="https://img.shields.io/badge/Estado-Depredador-red?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/IA-Nativa_Unificada-3b82f6?style=for-the-badge" alt="AI Native">
 </p>
 
 ---
 
-**Aquila** no es solo un lenguaje de programación; es una evolución biológica del software. Construido sobre el motor de **Rust**, Aquila nace con un único propósito: **devorar la ineficiencia de Python** y proporcionar una plataforma de desarrollo autónoma, rápida y en nuestro idioma.
+**Aquila** no es simplemente un lenguaje de programación; es un organismo cibernético diseñado para dominar. Forjado en las profundidades de **Rust**, Aquila ha sido programado con una misión genérica: **erradicar el estancamiento de Python** y sustituirlo por una plataforma autónoma de alto rendimiento que piensa, repara y construye en nuestro idioma.
 
-> "La serpiente tiene un nuevo dueño." — Juan Manuel Peralta
+> "En el código, como en la naturaleza, solo el más rápido sobrevive. La serpiente ha tenido su tiempo. Ahora, el cielo pertenece al águila." — **Juan Manuel Peralta**
 
-## 🚀 ¿Por qué Aquila es el fin del reinado de Python?
+---
 
-| Característica | Python (Serpiente) 🐍 | Aquila (Águila) 🦅 |
+## 🔱 La Trinidad del Poder
+
+Aquila opera bajo tres entidades autónomas que transforman la experiencia de desarrollo:
+
+### 🛠️ El Constructo (The Architect)
+No escribas arquitectura, descríbela. El **Constructo** es el motor generativo de Aquila que, mediante lenguaje natural, diseña la estructura completa de aplicaciones Full-Stack. Desde el esquema de Base de Datos hasta el Frontend reactivo, el Constructo lo materializa instantáneamente.
+> `aquila crear "Un sistema de inventario con IA que prediga stock"`
+
+### 🛡️ El Guardián (Self-Healing AI)
+Los errores son el alimento del **Guardián**. Cuando un script falla, el Guardián interviene en tiempo real, analiza la traza de error con modelos de lenguaje integrados y **auto-repara** el código fuente. Aquila es el primer lenguaje que se cura a sí mismo.
+
+### 🏹 Modo Cazador (High-Performance Engine)
+El **Modo Cazador** activa el núcleo purista de Rust. Optimizado para ejecución paralela y gestión de memoria zero-cost. En este modo, Aquila no interpreta; ejecuta con la precisión de un depredador, destruyendo cuellos de botella y latencias innecesarias.
+
+---
+
+## ⚔️ Aquila vs. La Serpiente (Python)
+
+| Atributo | Python 🐍 | Aquila 🦅 |
 | :--- | :--- | :--- |
-| **Velocidad** | Interpretado (Lento) | Motor Rust (Ultra-rápido) |
-| **IA** | Requiere 10+ librerías | Primitiva `ia()` nativa |
-| **Web** | Flask/Django (Complejo) | `ServidorWeb` integrado |
-| **Base de Datos** | Instalación externa | `BaseDatos` SQLite nativa |
-| **Sintaxis** | Inglés | Español / Pseudocódigo Natural |
-| **Binarios** | Difícil de empaquetar | Binarios portátiles nativos |
+| **ADN** | Interpretado C (Legacy) | **Rust Nativo (Moderno)** |
+| **Instinto** | Pasivo (Espera librerías) | **Activo (IA Integrada)** |
+| **Interoperabilidad** | Difícil (C/C++) | **Depredador FFI (Secuestra Python)** |
+| **Infraestructura** | Fragmentada | **Base de Datos y Web Nativo** |
+| **Lenguaje** | Inglés Obligatorio | **Español Nativo / Natural** |
+| **Distribución** | "Dependencia Hell" | **Binarios Únicos Portátiles** |
 
 ---
 
-## 🧠 Características Core
+## 🌪️ Capacidades Especiales
 
-### 1. El Guardián (IA Nativa)
-Aquila no usa librerías para IA; **Aquila es IA**. Con la función `ia()`, el lenguaje se auto-conecta con Groq, Claude, Ollama o OpenAI según la configuración, permitiendo lógica inteligente en el corazón de tus scripts.
+### 🧬 Depredador FFI (The Python Hijacker)
+Mediante el comando `usar`, Aquila secuestra cualquier librería de Python (`TensorFlow`, `PyTorch`, `OpenCV`) y la somete a su flujo de control en Rust. No migramos de Python; lo dominamos.
 
-### 2. Depredador FFI (Caza a Python)
-Mediante el comando `usar`, Aquila secuestra el ecosistema de Python. Puedes importar `numpy`, `pandas` o cualquier módulo `.py` y ejecutarlo con la potencia y seguridad de Rust.
-
-### 3. El Arquitecto (CLI Generativo)
-El comando `crear` utiliza LLMs locales para generar la arquitectura completa de un proyecto basándose solo en tu descripción.
+### 🌐 Red Neuronal Nativa
+La función `ia()` es una primitiva del lenguaje. Olvida las configuraciones de API complejas. Aquila se conecta dinámicamente a **Groq, Claude, OpenAI** o modelos locales vía **Ollama**, con balanceo de carga automático.
 
 ---
 
-## 🛠️ Instalación Rápida
+## 💻 Manifiesto de Código
 
-### Linux & macOS
+### Backend Reactivo con IA en tiempo récord:
+```aquila
+// 🦅 Protocolo Aquila v2.1
+servidor = nuevo ServidorWeb(8080)
+
+// El Guardián vigila esta ruta
+servidor.ruta("POST", "/analizar", funcion(req) {
+    datos = req.cuerpo
+    
+    // Consulta al núcleo de IA
+    analisis = ia("Analiza la intención de este mensaje: " + datos.texto)
+    
+    retornar {
+        "estado": "confirmado",
+        "ia_output": analisis,
+        "motor": "Aquila-Rust-Engine"
+    }
+})
+
+imprimir("🏹 Modo Cazador Iniciado en puerto 8080")
+servidor.iniciar()
+```
+
+---
+
+## 🛠️ Despegue Inmediato
+
+### Despliegue en un solo comando (Linux/macOS)
 ```bash
 curl -fsSL https://aquila-lang.dev/install.sh | bash
 ```
 
-### Windows
+### Comando de Caza (Windows)
 ```bash
 winget install aquila-lang
 ```
 
 ---
 
-## 💻 Ejemplo de Poder
-
-### Un Servidor API con IA en 5 líneas:
-```aquila
-// 🦅 Aquila v2.1
-servidor = nuevo ServidorWeb(8080)
-
-servidor.ruta("GET", "/pregunta", funcion(req) {
-    respuesta = ia(req.parametros.pregunta)
-    retornar {"respuesta": respuesta, "autor": "Juan Manuel Peralta"}
-})
-
-servidor.iniciar()
-```
-
----
-
-## 🏛️ Arquitectura del Sistema
-
-```mermaid
-graph TD
-    A[Script .aq] --> B[Analizador Léxico / Sintáctico]
-    B --> C[Motor de Ejecución Rust]
-    C --> D{Primitivas Nativas}
-    D --> E[Servidor Web]
-    D --> F[Base de Datos SQLite]
-    D --> G[IA / Transformers]
-    D --> H[Depredador FFI Python]
-    H --> I[Ecosistema Python]
-```
-
----
-
-## 👤 El Creador
+## 👤 El Visionario
 **Juan Manuel Peralta Chacón**  
-Estudiante de Ingeniería de Sistemas  
-*Visión: Democratizar el alto rendimiento y la IA mediante un lenguaje que hable nuestro idioma.*
+*Ingeniero de Sistemas y Arquitecto de Aquila*
 
-- 📧 **Correo:** [peraltachaconjuanmanuel5@gmail.com](mailto:peraltachaconjuanmanuel5@gmail.com)
-- 💬 **WhatsApp:** [+57 321 4281888](https://wa.me/573214281888)
-- 💳 **PayPal:** [paypal.me/JuanPeraltaChacon](https://www.paypal.me/JuanPeraltaChacon)
+*Mi misión es simple: crear herramientas que piensen más allá de los límites tradicionales y hablen el lenguaje de quienes las crean.*
 
----
-
-## ⚖️ Licencia
-Este proyecto es **Open Source** bajo la licencia **GNU GPL v3**. La propiedad intelectual pertenece a **Juan Manuel Peralta Chacón (2026)**. Se fomenta la colaboración y el estudio, siempre respetando la autoría original.
+- 📧 **Contacto:** [peraltachaconjuanmanuel5@gmail.com](mailto:peraltachaconjuanmanuel5@gmail.com)
+- 💬 **Directo:** [+57 321 4281888](https://wa.me/573214281888)
+- 💳 **Soporte al Proyecto:** [paypal.me/JuanPeraltaChacon](https://www.paypal.me/JuanPeraltaChacon)
 
 ---
-<p align="center">🦅 <i>"El águila no caza moscas, caza serpientes."</i></p>
+<p align="center">Construido con la fuerza de Rust y la visión de la IA. © 2026 Aquila Labs.</p>
