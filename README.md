@@ -13,25 +13,26 @@
 
 ---
 
-**Aquila** no es simplemente un lenguaje de programación; es un organismo cibernético diseñado para dominar. Forjado en las profundidades de **Rust**, Aquila nace para **devorar la ineficiencia** y proporcionar una plataforma autónoma que piensa, repara y construye en nuestro idioma.
+## 🌑 La Narrativa de la Cacería
 
-> "La serpiente ha tenido su tiempo. Ahora, el cielo pertenece al águila." — **Juan Manuel Peralta**
+En las densas junglas del software, la **Serpiente (Python)** 🐍 ha reinado durante décadas, moviéndose lenta y pesadamente, asfixiando el rendimiento con su cuerpo pesado y lleno de dependencias.
+
+Pero desde las nubes de hierro de **Rust**, ha descendido un nuevo soberano. El **Águila (Aquila)** 🦅 no espera a que la presa se entregue; la observa desde lo alto con ojos de inteligencia artificial. Cuando el Águila detecta una necesidad, desciende en un picado supersónico (Modo Cazador), entierra sus garras en el cuerpo de la Serpiente y **le arrebata sus librerías más valiosas**. No es una convivencia; es una conquista. Aquila extrae el ADN de Python y lo inyecta en su núcleo de acero para volar más alto, más rápido y con menos esfuerzo.
+
+> "La Serpiente se arrastra. El Águila domina."
 
 ---
 
 ## 🔱 Los Sistemas de Dominio
 
-Aquila opera bajo tres entidades autónomas que transforman la experiencia de desarrollo:
-
 ### 🏹 Modo Cazador (The Python Hijacker)
-El **Modo Cazador** es la esencia depredadora de Aquila. Mediante el comando `usar`, Aquila **le roba las librerías a Python** y las integra directamente en su flujo de alto rendimiento. ¿Para qué escribir mil líneas si puedes secuestrar a `numpy`, `pandas` o `torch`? Este modo disminuye drásticamente la carga de trabajo y el código necesario, permitiendo que Aquila use el ecosistema más grande del mundo como su propio terreno de caza.
+Este es el momento del ataque. Cuando activas el comando `usar`, Aquila entra en **Modo Cazador**. Desciende sobre el ecosistema de Python, reclama sus librerías (`numpy`, `pandas`, `pytorch`) y las somete a su voluntad. Al "robar" este conocimiento acumulado, Aquila reduce tu código y tu trabajo a la mitad, ejecutando en milisegundos lo que a la Serpiente le tomaba una eternidad.
 
 ### 🛠️ El Arquitecto (The Generative Construct)
-No pierdas tiempo diseñando bases, deja que el **Arquitecto** lo haga. Con el comando `aquila crear`, el lenguaje utiliza su red neuronal para diseñar y materializar la estructura completa de un proyecto. Desde el backend en `.aq` hasta el frontend reactivo y la documentación. 
-> `aquila crear "Un dashboard de ventas con IA"`
+El cerebro detrás de la garra. El **Arquitecto** diseña la estrategia de cada proyecto. Mediante el comando `aquila crear`, el lenguaje materializa arquitecturas completas basadas en tus deseos. Es la inteligencia pura guiando la fuerza bruta de Rust.
 
 ### 🛡️ El Guardián (Self-Healing AI)
-Aquila es el primer lenguaje con instinto de supervivencia. Si tu código falla, el **Guardián** interviene, analiza el error en español y **ofrece reparar el archivo automáticamente**. Olvida el debugging eterno; deja que el águila limpie su propio nido.
+Incluso los depredadores más fuertes necesitan sanar. Si un script es herido por un error, el **Guardián** aparece instantáneamente. Analiza la herida, ofrece el remedio en español y repara el código en segundos. Aquila no solo caza; nunca muere.
 
 ---
 
@@ -48,25 +49,25 @@ Aquila es el primer lenguaje con instinto de supervivencia. Si tu código falla,
 
 ---
 
-## 🌪️ Ejemplo de Poder Real
+## 💻 Manifiesto de Cacería
 
-### Backend de Alto Rendimiento con Robo de Librerías:
+Así es como Aquila "secuestra" el poder de la serpiente para simplificar tu vida:
+
 ```aquila
-// 🦅 Modo Cazador Activo
-usar "numpy" como np
-usar "math" como mates
+// 🦅 Protocolo de Cacería v2.1
+usar "numpy" como np  // Arrebatando el poder matemático de la serpiente
+usar "pandas" como pd // Secuestrando la gestión de datos
 
 asincrono funcion principal() {
-    // El Arquitecto diseñó este flujo
-    imprimir("📡 Iniciando protocolo depredador...")
+    imprimir("📡 Iniciando rastreo de objetivos...")
     
-    // Usando librería robada de Python para ahorrar código
-    matriz = np.array([1, 2, 3])
-    imprimir("Cálculo FFI: " + a_texto(matriz.mean()))
+    // El Modo Cazador hace el trabajo sucio por ti
+    datos = np.array([10, 20, 30])
+    imprimir("Analítica FFI: " + a_texto(datos.sum()))
     
-    // IA Nativa sin configuraciones
-    respuesta = esperar ia("Genera un reporte de rendimiento")
-    imprimir("Reporte IA: " + respuesta)
+    // IA Nativa para tomar decisiones críticas
+    reporte = esperar ia("¿Cómo optimizar este ecosistema?")
+    imprimir("Decisión del Águila: " + reporte)
 }
 
 esperar principal()
@@ -88,9 +89,11 @@ aquila --compilar main.aq mi_app
 
 ---
 
-## 👤 El Creador
+## 👤 El Visionario
 **Juan Manuel Peralta Chacón**  
-*Ingeniero de Sistemas y Arquitecto de Aquila*
+*Arquitecto Maestro de Aquila*
+
+*Mi misión es simple: crear herramientas que piensen más allá de los límites tradicionales y hablen el lenguaje de quienes las crean.*
 
 - 📧 **Contacto:** [peraltachaconjuanmanuel5@gmail.com](mailto:peraltachaconjuanmanuel5@gmail.com)
 - 💬 **WhatsApp:** [+57 321 4281888](https://wa.me/573214281888)
