@@ -418,30 +418,38 @@ footer {
 
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
-    .hero { padding-top: 140px; } /* Evitar que el título se meta bajo el nav */
+    nav { 
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: none; /* Eliminar transform que puede causar problemas */
+        padding: 1rem 3%; 
+        flex-direction: column;
+        gap: 0.8rem;
+        background: #0a0a0f !important; /* Fondo sólido para máxima visibilidad */
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .hero { padding-top: 180px; } /* Más espacio para compensar el menú en columna */
     .gradient-text { font-size: 2.1rem; }
     .subtitle { font-size: 0.95rem; padding: 0 5%; }
-    
-    nav { 
-        padding: 0.8rem 2%; 
-        flex-direction: column;
-        gap: 0.5rem;
-    }
     
     .links {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0.4rem;
+        gap: 0.5rem;
         width: 100%;
     }
     
     .links a { 
         margin: 0; 
-        font-size: 0.7rem; 
-        background: rgba(255,255,255,0.06);
-        padding: 0.4rem 0.5rem;
-        border-radius: 5px;
+        font-size: 0.75rem; 
+        color: #fff !important; /* Forzar blanco */
+        background: rgba(255,255,255,0.1);
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
         white-space: nowrap;
     }
     
@@ -459,14 +467,14 @@ footer {
     .doc-grid { grid-template-columns: 1fr; }
     
     .testimonial-card {
-        width: 280px;
-        padding: 1rem;
+        width: 290px;
+        padding: 1.2rem;
     }
 
     .terminal-block {
         width: 100%;
         padding: 1rem;
-        margin: 1rem 0;
+        margin: 1.5rem 0;
     }
 
     .code {
