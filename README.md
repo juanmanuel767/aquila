@@ -79,7 +79,7 @@ esperar principal()
 
 ### Despliegue en un solo comando
 ```bash
-curl -fsSL https://juanmanuel767.github.io/aquila/installer/install.sh | bash
+curl -fsSL https://aquila-lang.com/installer/install.sh | bash
 ```
 
 ### Binario Portátil
