@@ -29,6 +29,10 @@
             --grad-neon: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
             --glow: 0 0 20px rgba(59, 130, 246, 0.4);
             --border-glass: rgba(255, 255, 255, 0.08);
+            --p-clamp: clamp(1rem, 5vw, 3.5rem);
+            --h1-clamp: clamp(2rem, 8vw, 4.5rem);
+            --h2-clamp: clamp(1.8rem, 6vw, 3rem);
+            --p-font: clamp(0.95rem, 2vw, 1.1rem);
         }
 
         * {
@@ -44,12 +48,11 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
+            width: 100%;
         }
 
-        h1, h2, h3, .tech-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
+        h1, h2, h3, .tech-font { font-family: 'Space Grotesk', sans-serif; }
+        
         .gradient-text {
             background: var(--grad-neon);
             -webkit-background-clip: text;
@@ -57,211 +60,131 @@
             background-clip: text;
         }
 
+        /* --- Global Styles --- */
+        section {
+            padding: var(--p-clamp) 10%;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        img { max-width: 100%; height: auto; }
+
         /* --- Components --- */
+        .btn-primary, .btn-outline {
+            min-height: 48px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            width: fit-content;
+        }
+
         .btn-primary {
             background: var(--grad-neon);
             color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            cursor: pointer;
             box-shadow: var(--glow);
+            border: none;
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
-        }
+        
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
 
         .btn-outline {
             border: 1px solid var(--border-glass);
             background: rgba(255, 255, 255, 0.03);
             color: var(--text-main);
-            padding: 0.8rem 1.8rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
         }
 
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
+        .btn-outline:hover { background: rgba(255, 255, 255, 0.08); }
 
         /* --- Navbar --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.2rem 10%;
+            padding: 1rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 12, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
             border-bottom: 1px solid var(--border-glass);
+            height: 70px;
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: -1px;
-        }
+        .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.3rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; min-height: 44px; display: flex; align-items: center; }
+        .nav-links a:hover { color: var(--primary); }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; z-index: 2100; min-height: 44px; justify-content: center; }
+        .menu-toggle span { width: 25px; height: 2px; background: white; transition: 0.3s; }
 
         /* --- Hero --- */
         .hero {
-            padding: 10rem 10% 6rem;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
+            padding-top: 120px;
             position: relative;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-            z-index: -1;
-        }
+        .hero h1 { font-size: var(--h1-clamp); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; max-width: 90%; }
+        .hero p.subtitle { font-size: var(--p-font); color: var(--text-dim); max-width: 750px; margin-bottom: 3rem; }
 
-        .badge-v {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: var(--primary);
-            padding: 0.4rem 1rem;
-            border-radius: 99px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-        }
-
-        .hero p.subtitle {
-            font-size: 1.25rem;
-            color: var(--text-dim);
-            max-width: 700px;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 4rem;
-        }
+        .hero-btns { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; margin-bottom: 4rem; width: 100%; }
 
         /* Terminal Display */
         .terminal {
             width: 100%;
-            max-width: 800px;
+            max-width: 850px;
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
             text-align: left;
-            animation: slideUp 0.8s ease-out;
         }
 
-        .terminal-header {
-            padding: 1rem;
-            background: rgba(255,255,255,0.02);
-            display: flex;
-            gap: 0.5rem;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .terminal-header { padding: 0.8rem 1.2rem; background: rgba(255,255,255,0.03); display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border-glass); }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
         .dot.red { background: #ff5f56; }
         .dot.yellow { background: #ffbd2e; }
         .dot.green { background: #27c93f; }
 
-        .terminal-body {
-            padding: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-        }
-
-        .code-ia { color: #f3c75f; }
-        .code-keyword { color: #8b5cf6; }
-        .code-string { color: #06b6d4; }
-        .code-comment { color: #64748b; font-style: italic; }
+        .terminal-body { padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; overflow-x: auto; white-space: pre; }
+        .code-ia { color: #f3c75f; } .code-keyword { color: #8b5cf6; } .code-string { color: #06b6d4; } .code-comment { color: #64748b; font-style: italic; }
 
         /* --- Stats --- */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            padding: 4rem 10%;
-            border-top: 1px solid var(--border-glass);
-            border-bottom: 1px solid var(--border-glass);
             background: rgba(255, 255, 255, 0.01);
             text-align: center;
         }
 
-        .stat-item h3 {
-            font-size: 2.5rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .stat-item p {
-            color: var(--text-dim);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+        .stat-item h3 { font-size: 2.8rem; margin-bottom: 0.2rem; }
+        .stat-item p { color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem; font-weight: 600; }
 
         /* --- Features --- */
-        .section-header {
-            text-align: center;
-            padding: 6rem 10% 4rem;
-        }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: var(--h2-clamp); margin-bottom: 1rem; }
+        .section-header p { color: var(--text-dim); max-width: 600px; margin: 0 auto; font-size: var(--p-font); }
 
-        .section-header h2 { font-size: 3rem; margin-bottom: 1rem; }
-        .section-header p { color: var(--text-dim); max-width: 600px; margin: 0 auto; }
-
-        .features-grid {
+        .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            padding: 0 10% 6rem;
+            width: 100%;
         }
 
         .feature-card {
@@ -269,263 +192,80 @@
             border: 1px solid var(--border-glass);
             padding: 2.5rem;
             border-radius: 20px;
-            transition: border-color 0.3s, transform 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            background: var(--grad-neon);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .feature-card h3 { margin-bottom: 1rem; font-size: 1.5rem; }
-        .feature-card p { color: var(--text-dim); font-size: 0.95rem; }
-
-        /* --- Installation --- */
-        .install-box {
-            max-width: 800px;
-            margin: 0 auto 6rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .tabs {
-            display: flex;
-            background: rgba(255,255,255,0.02);
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .tab {
-            padding: 1rem 2rem;
-            cursor: pointer;
-            color: var(--text-dim);
-            border-bottom: 2px solid transparent;
-            font-weight: 600;
             transition: all 0.3s;
         }
 
-        .tab.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-            background: rgba(59, 130, 246, 0.05);
-        }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+        .feature-card h3 { margin-bottom: 1rem; font-size: 1.4rem; }
 
-        .tab-content {
-            padding: 2rem;
-            display: none;
-        }
+        /* --- Installation --- */
+        .install-box { max-width: 900px; margin: 0 auto; background: var(--bg-card); border-radius: 20px; overflow: hidden; border: 1px solid var(--border-glass); }
+        .tabs { display: flex; background: rgba(255,255,255,0.02); overflow-x: auto; }
+        .tab { padding: 1.2rem 2rem; cursor: pointer; color: var(--text-dim); border-bottom: 2px solid transparent; min-width: 120px; text-align: center; font-weight: 600; min-height: 48px; }
+        .tab.active { color: var(--primary); border-bottom-color: var(--primary); background: rgba(59, 130, 246, 0.05); }
 
+        .tab-content { padding: var(--p-clamp); display: none; }
         .tab-content.active { display: block; }
+        .cmd-line { background: #000; padding: 1.2rem; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .cmd-text { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; overflow-x: auto; }
 
-        .cmd-line {
-            background: #000;
-            padding: 1.2rem;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-        }
-
-        .copy-btn {
-            background: none;
-            border: 1px solid var(--border-glass);
-            color: var(--text-dim);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .copy-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
-
-        /* --- Syntax Examples --- */
-        .syntax-examples {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-            padding: 0 10% 6rem;
-        }
-
-        .syntax-card {
-            background: #0d0d0f;
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid var(--border-glass);
-        }
-
-        .syntax-card h4 { margin-bottom: 1rem; color: var(--accent); }
-
-        /* --- Functions Table --- */
-        .table-section { padding: 0 10% 6rem; }
-        .search-box {
-            width: 100%;
-            max-width: 400px;
-            padding: 0.8rem 1.2rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 10px;
-            color: white;
-            margin-bottom: 2rem;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 1.2rem;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        th { background: rgba(255,255,255,0.02); color: var(--primary); text-transform: uppercase; font-size: 0.75rem; }
+        /* --- Tables Responsive --- */
+        .table-responsive { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 16px; overflow: hidden; margin-top: 1rem; }
+        th, td { padding: 1.2rem; text-align: left; border-bottom: 1px solid var(--border-glass); }
+        th { background: rgba(255,255,255,0.03); color: var(--primary); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
 
         /* --- Guardian --- */
-        .guardian {
-            padding: 6rem 10%;
-            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .guardian-visual {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .step-card {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-glass);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            opacity: 0.6;
-            transition: 0.3s;
-        }
-
-        .step-card.active {
-            opacity: 1;
-            border-color: var(--secondary);
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
-        }
-
-        .step-num {
-            width: 30px;
-            height: 30px;
-            background: var(--grad-neon);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-
-        /* --- Community --- */
-        .community {
-            padding: 6rem 10%;
-            text-align: center;
-        }
-
-        .reg-form {
-            max-width: 500px;
-            margin: 3rem auto;
-            background: var(--bg-card);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 1px solid var(--border-glass);
-        }
-
-        .form-group { text-align: left; margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-dim); }
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem 1.2rem;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border-glass);
-            border-radius: 10px;
-            color: white;
-            outline: none;
-        }
-
-        .form-group input:focus { border-color: var(--primary); }
+        .guardian { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+        .guardian-visual { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1rem; }
+        .step-card { background: var(--bg-card); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-glass); display: flex; align-items: center; gap: 1.2rem; opacity: 0.5; transition: 0.4s; }
+        .step-card.active { opacity: 1; border-color: var(--secondary); box-shadow: 0 0 30px rgba(139, 92, 246, 0.15); }
+        .step-num { width: 34px; height: 34px; background: var(--grad-neon); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
 
         /* --- Footer --- */
-        footer {
-            padding: 6rem 10% 3rem;
-            border-top: 1px solid var(--border-glass);
-            background: #050507;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-
-        .footer-brand h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .footer-brand p { color: var(--text-dim); max-width: 300px; }
-
+        footer { background: #050507; padding: 5rem 10% 2rem; border-top: 1px solid var(--border-glass); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem; }
+        .footer-brand p { color: var(--text-dim); margin-top: 1rem; }
         .footer-links h4 { margin-bottom: 1.5rem; }
         .footer-links ul { list-style: none; }
         .footer-links li { margin-bottom: 0.8rem; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; transition: 0.3s; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; transition: 0.3s; min-height: 40px; display: inline-block; }
         .footer-links a:hover { color: var(--primary); }
 
-        .copyright {
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-glass);
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 0.85rem;
+        /* --- Mobile Breakpoints --- */
+        @media (max-width: 900px) {
+            nav { padding: 1rem 5%; }
+            .nav-links {
+                position: fixed; top: 70px; left: 0; width: 100%; height: 0; background: var(--bg-deep);
+                flex-direction: column; justify-content: center; overflow: hidden; transition: 0.4s ease-in-out; border-bottom: 1px solid var(--border-glass);
+            }
+            .nav-links.active { height: 300px; padding: 2rem 0; }
+            .menu-toggle { display: flex; }
+            .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            
+            .hero h1 { font-size: 3rem; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .hero-btns > * { width: 80%; text-align: center; }
+
+            /* Table as Cards */
+            table, thead, tbody, th, td, tr { display: block; }
+            thead tr { position: absolute; top: -9999px; left: -9999px; }
+            tr { border: 1px solid var(--border-glass); margin-bottom: 1.5rem; border-radius: 12px; padding: 1rem; background: var(--bg-card); }
+            td { border: none; position: relative; padding-left: 50%; min-height: 40px; }
+            td::before {
+                content: attr(data-label); position: absolute; left: 1rem; width: 45%; padding-right: 10px;
+                white-space: nowrap; font-weight: 700; color: var(--primary); font-size: 0.7rem; text-transform: uppercase;
+            }
         }
 
-        /* --- Animations --- */
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in { animation: fadeIn 1s ease-out; }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .nav-links { display: none; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .hero-btns { flex-direction: column; width: 100%; }
-            .hero-btns > * { width: 100%; text-align: center; justify-content: center; }
-            .syntax-examples { grid-template-columns: 1fr; }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .btn-primary, .btn-outline { width: 100%; }
+            .stat-item h3 { font-size: 2.2rem; }
+            .grid-layout { grid-template-columns: 1fr; }
         }
 
     </style>
@@ -535,10 +275,13 @@
     <!-- Navbar -->
     <nav>
         <div class="nav-logo">
-            <img src="https://aquilalang.you/assets/logo.png" alt="Logo" width="32">
+            <img src="https://aquilalang.you/assets/logo.png" alt="Logo" width="40">
             NEURO<span class="gradient-text">CODE</span>
         </div>
-        <div class="nav-links">
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="nav-links">
             <a href="#sintaxis">Sintaxis</a>
             <a href="#builtins">Funciones</a>
             <a href="#ffi">Depredador</a>
@@ -548,53 +291,54 @@
     </nav>
 
     <!-- Hero -->
-    <header class="hero">
-        <div class="badge-v">v2.1 RUST CORE • IA NATIVA</div>
-        <h1 class="fade-in">El futuro del software <br> <span class="gradient-text">habla español.</span></h1>
-        <p class="subtitle fade-in">Un lenguaje de alto rendimiento basado en Rust, diseñado para automatizar, integrar modelos de IA y cazar librerías de Python sin fricción.</p>
+    <header class="hero fade-in">
+        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); color: var(--primary); padding: 0.4rem 1.2rem; border-radius: 99px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">
+            v1.0 ESTABLE • RUST CORE
+        </div>
+        <h1>El futuro del software <br> <span class="gradient-text">habla español.</span></h1>
+        <p class="subtitle">NeuroCode es el primer lenguaje AI-nativo de alto rendimiento. Construido en Rust, diseñado para automatizar y cazar código sin límites.</p>
         
         <div class="hero-btns">
-            <a href="https://github.com/juanmanuel767/Neuro-code" target="_blank" class="btn-primary">⭐ Ver en GitHub</a>
-            <a href="#docs" class="btn-outline">📖 Documentación</a>
+            <a href="https://github.com/juanmanuel767/Neuro-code" target="_blank" class="btn-primary">⭐ GitHub Oficial</a>
+            <a href="#sintaxis" class="btn-outline">📖 Ver Sintaxis</a>
         </div>
 
         <div class="terminal">
             <div class="terminal-header">
                 <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                <span style="font-size:0.7rem; color:#64748b; margin-left:1rem; font-family:monospace;">main.neuro</span>
+                <span style="font-size:0.75rem; color:#64748b; margin-left:1rem; font-family:monospace;">main.neuro</span>
             </div>
             <div class="terminal-body tech-font">
-                <div><span class="code-comment">// Inteligencia Artificial Nativa</span></div>
-                <div><span class="code-keyword">respuesta</span> = <span class="code-keyword">esperar</span> <span class="code-ia">ia</span>(<span class="code-string">"Analiza este archivo"</span>)</div>
-                <br>
-                <div><span class="code-comment">// Modo Depredador: Caza Python</span></div>
-                <div><span class="code-keyword">depredactor</span> python:numpy <span class="code-keyword">como</span> np</div>
-                <div><span class="code-keyword">datos</span> = np.array([<span class="code-ia">10, 20, 30</span>])</div>
-                <br>
-                <div><span class="code-comment">// Servidor Web en Rust</span></div>
-                <div><span class="code-keyword">servidor</span> = <span class="code-keyword">nuevo</span> <span class="code-ia">ServidorWeb</span>(<span class="code-ia">8080</span>)</div>
-                <div><span class="code-keyword">servidor</span>.iniciar()</div>
-            </div>
+<span class="code-comment">// IA Nativa sin librerías externas</span>
+<span class="code-keyword">respuesta</span> = <span class="code-keyword">esperar</span> <span class="code-ia">ia</span>(<span class="code-string">"Optimiza esta lógica"</span>)
+
+<span class="code-comment">// Modo Depredador: Importa Python directo</span>
+<span class="code-keyword">depredactor</span> python:numpy <span class="code-keyword">como</span> np
+<span class="code-keyword">datos</span> = np.array([<span class="code-ia">10, 20, 30</span>])
+
+<span class="code-comment">// Servidor Web en Rust (Cero latencia)</span>
+<span class="code-keyword">servidor</span> = <span class="code-keyword">nuevo</span> <span class="code-ia">ServidorWeb</span>(<span class="code-ia">8080</span>)
+<span class="code-keyword">servidor</span>.iniciar()</div>
         </div>
     </header>
 
     <!-- Stats -->
     <section class="stats">
         <div class="stat-item">
-            <h3 class="gradient-text">920+</h3>
+            <h3 class="gradient-text">950+</h3>
             <p>Descargas</p>
         </div>
         <div class="stat-item">
-            <h3 class="gradient-text">22</h3>
-            <p>Built-ins</p>
+            <h3 class="gradient-text">1.0</h3>
+            <p>Versión Estable</p>
         </div>
         <div class="stat-item">
             <h3 class="gradient-text">24</h3>
-            <p>Keywords</p>
+            <p>Palabras Clave</p>
         </div>
         <div class="stat-item">
-            <h3 class="gradient-text">12</h3>
-            <p>Tipos de Datos</p>
+            <h3 class="gradient-text">39</h3>
+            <p>Pruebas Pasadas</p>
         </div>
     </section>
 
@@ -602,51 +346,41 @@
     <section id="ffi">
         <div class="section-header">
             <h2>Poder <span class="gradient-text">Ilimitado</span></h2>
-            <p>NeuroCode combina la seguridad de Rust con la versatilidad de la IA para una experiencia de desarrollo soberana.</p>
+            <p>NeuroCode unifica la potencia de Rust con la inteligencia artificial para crear software soberano.</p>
         </div>
 
-        <div class="features-grid">
+        <div class="grid-layout">
             <div class="feature-card">
                 <span class="feature-icon">🧠</span>
                 <h3>IA Nativa</h3>
-                <p>Usa Ollama, OpenAI o Groq sin librerías externas. La IA es un ciudadano de primera clase en el lenguaje.</p>
+                <p>Ollama y Groq integrados. La función <span class="inline-code">ia()</span> es nativa del núcleo.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-icon">🦅</span>
                 <h3>Modo Depredador</h3>
-                <p>Importa cualquier módulo de Python (pandas, torch, etc.) y ejecútalo a través de FFI sin latencia de VM.</p>
+                <p>Caza cualquier librería de Python y úsala como si fuera nativa de NeuroCode.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-icon">⚙️</span>
-                <h3>Motor en Rust</h3>
-                <p>Velocidad de ejecución comparable a C++. Compilación estática y manejo de memoria ultra seguro.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">🌐</span>
-                <h3>Servidor Web</h3>
-                <p>Crea APIs e interfaces reactivas usando nuestro servidor HTTP embebido de alto rendimiento.</p>
+                <h3>Rust Engine</h3>
+                <p>Seguridad de memoria garantizada y velocidad extrema en cada instrucción.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-icon">🛡️</span>
                 <h3>El Guardián</h3>
-                <p>Sistema reactivo que analiza errores en tiempo real y sugiere parches automáticos usando LLMs.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">🗄️</span>
-                <h3>SQLite Embebido</h3>
-                <p>Base de datos nativa sin configuraciones pesadas. SQL puro desde la primera línea.</p>
+                <p>Sistema inteligente que detecta errores y repara el código fuente automáticamente.</p>
             </div>
         </div>
     </section>
 
     <!-- Installation -->
-    <section id="descargar" style="padding: 0 10%;">
+    <section id="descargar">
         <div class="section-header">
-            <h2>Instalación <span class="gradient-text">Instantánea</span></h2>
-            <p>Elige tu plataforma y prepárate para cazar código.</p>
+            <h2>Lanzamiento <span class="gradient-text">Final</span></h2>
+            <p>Instala el motor de NeuroCode en segundos en cualquier sistema operativo.</p>
         </div>
 
-        <div class="install-box tech-font">
+        <div class="install-box">
             <div class="tabs">
                 <div class="tab active" data-target="linux">Linux</div>
                 <div class="tab" data-target="macos">macOS</div>
@@ -654,20 +388,19 @@
             </div>
             <div id="linux" class="tab-content active">
                 <div class="cmd-line">
-                    <span id="cmd-l">curl -fsSL https://aquilalang.you/installer/install.sh | bash</span>
+                    <span id="cmd-l" class="cmd-text">curl -fsSL https://aquilalang.you/installer/install.sh | bash</span>
                     <button class="copy-btn" onclick="copyText('cmd-l', this)">COPIAR</button>
                 </div>
-                <p style="margin-top:1rem; font-size:0.8rem; color:#64748b;">Compatible con Debian, Ubuntu, Arch y Fedora.</p>
             </div>
             <div id="macos" class="tab-content">
                 <div class="cmd-line">
-                    <span id="cmd-m">brew install neurocode-lang</span>
+                    <span id="cmd-m" class="cmd-text">brew install neurocode-lang</span>
                     <button class="copy-btn" onclick="copyText('cmd-m', this)">COPIAR</button>
                 </div>
             </div>
             <div id="windows" class="tab-content">
                 <div class="cmd-line">
-                    <span id="cmd-w">winget install NeuroCode.CLI</span>
+                    <span id="cmd-w" class="cmd-text">winget install NeuroCode.CLI</span>
                     <button class="copy-btn" onclick="copyText('cmd-w', this)">COPIAR</button>
                 </div>
             </div>
@@ -677,126 +410,90 @@
     <!-- Syntax Examples -->
     <section id="sintaxis">
         <div class="section-header">
-            <h2>Sintaxis <span class="gradient-text">Limpia</span></h2>
-            <p>Programar nunca fue tan natural. Lee y escribe lógica compleja en tu propio idioma.</p>
+            <h2>Sintaxis <span class="gradient-text">Expressiva</span></h2>
+            <p>Lee y escribe código como si estuvieras pensando. 100% en español.</p>
         </div>
 
-        <div class="syntax-examples">
-            <div class="syntax-card tech-font">
-                <h4>🚀 Básico</h4>
-                <div class="code-block">
-<span class="code-keyword">si</span> puntuacion > <span class="code-ia">90</span> {
-    <span class="code-ia">imprimir</span>(<span class="code-string">"¡Felicidades!"</span>)
+        <div class="grid-layout">
+            <div class="feature-card tech-font" style="padding: 1.5rem; background: #0d0d0f;">
+                <h4 style="color:var(--accent); margin-bottom:1rem;">🚀 Básico</h4>
+                <pre style="overflow-x:auto;"><span class="code-keyword">si</span> puntos > 90 {
+    <span class="code-ia">imprimir</span>(<span class="code-string">"¡Bien!"</span>)
 } <span class="code-keyword">sino</span> {
-    <span class="code-ia">imprimir</span>(<span class="code-string">"Sigue intentando"</span>)
-}</div>
+    <span class="code-ia">imprimir</span>(<span class="code-string">"Falla"</span>)
+}</pre>
             </div>
-            <div class="syntax-card tech-font">
-                <h4>🧠 Inteligencia Artificial</h4>
-                <div class="code-block">
-<span class="code-keyword">asincrono funcion</span> analizar() {
-    <span class="code-keyword">respuesta</span> = <span class="code-keyword">esperar</span> <span class="code-ia">ia</span>(<span class="code-string">"Optimiza esto"</span>)
-    <span class="code-ia">imprimir</span>(<span class="code-keyword">respuesta</span>)
-}</div>
+            <div class="feature-card tech-font" style="padding: 1.5rem; background: #0d0d0f;">
+                <h4 style="color:var(--secondary); margin-bottom:1rem;">🧠 IA</h4>
+                <pre style="overflow-x:auto;"><span class="code-keyword">asincrono funcion</span> ia_test() {
+    <span class="code-keyword">res</span> = <span class="code-keyword">esperar</span> <span class="code-ia">ia</span>(<span class="code-string">"Resumen"</span>)
+    <span class="code-ia">imprimir</span>(<span class="code-keyword">res</span>)
+}</pre>
             </div>
-            <div class="syntax-card tech-font">
-                <h4>🌐 Web & FFI</h4>
-                <div class="code-block">
-<span class="code-keyword">depredactor</span> python:pandas <span class="code-keyword">como</span> pd
-<span class="code-keyword">servidor</span> = <span class="code-keyword">nuevo</span> <span class="code-ia">ServidorWeb</span>(<span class="code-ia">3000</span>)
-<span class="code-keyword">servidor</span>.ruta(<span class="code-string">"GET"</span>, <span class="code-string">"/"</span>, home)</div>
+            <div class="feature-card tech-font" style="padding: 1.5rem; background: #0d0d0f;">
+                <h4 style="color:var(--primary); margin-bottom:1rem;">🌐 Web</h4>
+                <pre style="overflow-x:auto;"><span class="code-keyword">servidor</span> = <span class="code-keyword">nuevo</span> <span class="code-ia">ServidorWeb</span>(80)
+<span class="code-keyword">servidor</span>.ruta(<span class="code-string">"GET"</span>, <span class="code-string">"/"</span>, home)
+<span class="code-keyword">servidor</span>.iniciar()</pre>
             </div>
         </div>
     </section>
 
     <!-- Functions Table -->
-    <section id="builtins" class="table-section">
+    <section id="builtins">
         <div class="section-header">
             <h2>Librería <span class="gradient-text">Estándar</span></h2>
-            <p>Herramientas potentes disponibles globalmente sin importar nada.</p>
+            <p>Herramientas atómicas compiladas directamente en Rust.</p>
         </div>
         
-        <input type="text" id="fnSearch" class="search-box" placeholder="🔎 Buscar funciones (ia, imrpimir, http...)" onkeyup="filterTable()">
-        
-        <div style="overflow-x: auto;">
-            <table id="fnTable">
+        <div class="table-responsive">
+            <table>
                 <thead>
-                    <tr>
-                        <th>Función</th>
-                        <th>Parámetros</th>
-                        <th>Descripción</th>
-                    </tr>
+                    <tr><th>Función</th><th>Parámetros</th><th>Descripción</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>ia()</td><td>(prompt, [conf])</td><td>Consulta IA asincrona (Ollama/Groq/etc)</td></tr>
-                    <tr><td>imprimir()</td><td>(...args)</td><td>Salida estándar a consola</td></tr>
-                    <tr><td>http_get()</td><td>(url)</td><td>Petición HTTP GET nativa asincrona</td></tr>
-                    <tr><td>leer_archivo()</td><td>(ruta)</td><td>Lectura de disco en tiempo real</td></tr>
-                    <tr><td>a_numero()</td><td>(valor)</td><td>Casteo seguro a tipo Numérico</td></tr>
-                    <tr><td>rango()</td><td>(n)</td><td>Genera una lista de 0 a n-1</td></tr>
+                    <tr><td data-label="Función">ia()</td><td data-label="Parámetros">(prompt, [conf])</td><td data-label="Descripción">IA nativa (Ollama/OpenAI)</td></tr>
+                    <tr><td data-label="Función">imprimir()</td><td data-label="Parámetros">(...args)</td><td data-label="Descripción">Salida estándar a consola</td></tr>
+                    <tr><td data-label="Función">http_get()</td><td data-label="Parámetros">(url)</td><td data-label="Descripción">Petición HTTP asíncrona</td></tr>
+                    <tr><td data-label="Función">a_numero()</td><td data-label="Parámetros">(txt)</td><td data-label="Descripción">Conversión segura a número</td></tr>
+                    <tr><td data-label="Función">rango()</td><td data-label="Parámetros">(n)</td><td data-label="Descripción">Genera lista de 0 a n-1</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
     <!-- Guardian -->
-    <section id="guardian-sec" class="guardian">
+    <section class="guardian">
         <div style="flex:1; min-width:300px;">
-            <h2 style="font-size:3rem; margin-bottom:1.5rem;">El <span class="gradient-text">Guardián</span></h2>
-            <p style="color:var(--text-dim); font-size:1.1rem; margin-bottom:2rem;">Olvida los crasheos frustrantes. NeuroCode no solo te dice que falló, sino que entiende por qué y sabe cómo arreglarlo.</p>
-            <button class="btn-primary">Ver Blindaje en Acción</button>
+            <h2 style="font-size: var(--h2-clamp); margin-bottom:1.5rem;">El <span class="gradient-text">Guardián</span></h2>
+            <p style="color:var(--text-dim); margin-bottom:2rem;">Detección, análisis y reparación automática de errores con inteligencia artificial.</p>
+            <a href="https://github.com/juanmanuel767/Neuro-code" target="_blank" class="btn-primary">Ver Blindaje en GitHub</a>
         </div>
         
         <div class="guardian-visual">
-            <div class="step-card active">
-                <div class="step-num">1</div>
-                <div>
-                    <strong>Detección de Error</strong>
-                    <p style="font-size:0.8rem; color:var(--text-dim);">Detección proactiva en tiempo de ejecución.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <div>
-                    <strong>Análisis IA</strong>
-                    <p style="font-size:0.8rem; color:var(--text-dim);">LLM analiza el contexto del archivo.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <div>
-                    <strong>Sugerencia de Parche</strong>
-                    <p style="font-size:0.8rem; color:var(--text-dim);">Generación de código corregido validado.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-num">4</div>
-                <div>
-                    <strong>Reparación Automática</strong>
-                    <p style="font-size:0.8rem; color:var(--text-dim);">El archivo se actualiza tras tu aprobación.</p>
-                </div>
-            </div>
+            <div class="step-card active"><div class="step-num">1</div><div><strong>Detección</strong><p style="font-size:0.8rem; color:#64748b;">Error en ejecución</p></div></div>
+            <div class="step-card"><div class="step-num">2</div><div><strong>Análisis</strong><p style="font-size:0.8rem; color:#64748b;">Cerebro IA local</p></div></div>
+            <div class="step-card"><div class="step-num">3</div><div><strong>Reparación</strong><p style="font-size:0.8rem; color:#64748b;">Parche automático</p></div></div>
         </div>
     </section>
 
     <!-- Community -->
-    <section id="comunidad" class="community">
+    <section id="comunidad" style="text-align:center;">
         <div class="section-header">
-            <h2>Nace una <span class="gradient-text">Comunidad</span></h2>
-            <p>Únete a los más de <strong id="user-count">920</strong> desarrolladores que ya programan en su idioma.</p>
+            <h2>Únete al <span class="gradient-text">Nido</span></h2>
+            <p>Sé parte de los primeros desarrolladores del primer lenguaje hispano IA-nativo.</p>
         </div>
-
-        <div class="reg-form">
+        <div style="max-width:500px; margin: 0 auto; background: var(--bg-card); padding: clamp(1.5rem, 5vw, 3rem); border-radius: 24px; border: 1px solid var(--border-glass);">
             <form onsubmit="return false">
-                <div class="form-group">
-                    <label>Nombre de usuario</label>
-                    <input type="text" placeholder="juan_dev">
+                <div style="margin-bottom:1.2rem; text-align:left;">
+                    <label style="font-size:0.85rem; color:var(--text-dim); display:block; margin-bottom:0.5rem;">Nombre</label>
+                    <input type="text" style="width:100%; padding:0.9rem; background:rgba(0,0,0,0.4); border:1px solid var(--border-glass); border-radius:10px; color:white;">
                 </div>
-                <div class="form-group">
-                    <label>Correo electrónico</label>
-                    <input type="email" placeholder="hola@mundo.com">
+                <div style="margin-bottom:1.5rem; text-align:left;">
+                    <label style="font-size:0.85rem; color:var(--text-dim); display:block; margin-bottom:0.5rem;">Email</label>
+                    <input type="email" style="width:100%; padding:0.9rem; background:rgba(0,0,0,0.4); border:1px solid var(--border-glass); border-radius:10px; color:white;">
                 </div>
-                <button class="btn-primary" style="width:100%; border-radius:10px;">🧠 UNIRME AL NIDO</button>
+                <button class="btn-primary" style="width:100%;">🧠 REGISTRARME</button>
             </form>
         </div>
     </section>
@@ -806,78 +503,59 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div class="nav-logo" style="margin-bottom:1.5rem;">
-                    <img src="https://aquilalang.you/assets/logo.png" alt="Logo" width="40">
+                    <img src="https://aquilalang.you/assets/logo.png" alt="Logo" width="45">
                     NEUROCODE
                 </div>
-                <p>El primer lenguaje AI-Nativo construido en Rust para el mundo hispanohablante.</p>
+                <p>Potenciado por Rust · IA Nativa · Python FFI.</p>
             </div>
             <div class="footer-links">
                 <h4>Proyecto</h4>
                 <ul>
-                    <li><a href="#sintaxis">Documentación</a></li>
+                    <li><a href="#sintaxis">Sintaxis</a></li>
                     <li><a href="#descargar">Instalación</a></li>
-                    <li><a href="https://github.com/juanmanuel767/Neuro-code" target="_blank">GitHub</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Social</h4>
-                <ul>
-                    <li><a href="#">Discord</a></li>
-                    <li><a href="#">Twitter/X</a></li>
-                    <li><a href="#">YouTube</a></li>
+                    <li><a href="https://github.com/juanmanuel767/Neuro-code">GitHub</a></li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            © 2026 NeuroCode Labs. Todos los derechos reservados. <br>
-            Creado por Juan Manuel Peralta
+            © 2026 NeuroCode Labs. Creado por Juan Manuel Peralta.
         </div>
     </footer>
 
     <script>
-        // Tabs logic
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.target).classList.add('active');
+        // Hamburger Menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Tabs
+        document.querySelectorAll('.tab').forEach(t => {
+            t.addEventListener('click', () => {
+                document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+                t.classList.add('active');
+                document.getElementById(t.dataset.target).classList.add('active');
             });
         });
 
-        // Copy logic
+        // Copy Helper
         function copyText(id, btn) {
-            const text = document.getElementById(id).textContent;
-            navigator.clipboard.writeText(text);
-            const original = btn.textContent;
+            const txt = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(txt);
+            const orig = btn.textContent;
             btn.textContent = '✅ COPIADO';
-            setTimeout(() => btn.textContent = original, 2000);
+            setTimeout(() => btn.textContent = orig, 1500);
         }
 
-        // Search logic
-        function filterTable() {
-            let input = document.getElementById('fnSearch');
-            let filter = input.value.toLowerCase();
-            let table = document.getElementById('fnTable');
-            let tr = table.getElementsByTagName('tr');
-
-            for (let i = 1; i < tr.length; i++) {
-                let td = tr[i].getElementsByTagName('td')[0];
-                if (td) {
-                    let text = td.textContent || td.innerText;
-                    tr[i].style.display = text.toLowerCase().indexOf(filter) > -1 ? "" : "none";
-                }
-            }
-        }
-
-        // Guardian animation
-        let currentStep = 0;
-        const steps = document.querySelectorAll('.step-card');
+        // Guardian Loop
+        let step = 0;
+        const sCards = document.querySelectorAll('.step-card');
         setInterval(() => {
-            steps[currentStep].classList.remove('active');
-            currentStep = (currentStep + 1) % steps.length;
-            steps[currentStep].classList.add('active');
+            sCards[step].classList.remove('active');
+            step = (step + 1) % sCards.length;
+            sCards[step].classList.add('active');
         }, 3000);
     </script>
 </body>
