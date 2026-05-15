@@ -5,7 +5,7 @@
 # NeuroCode: El Lenguaje IA-Nativo en Español
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Versi%C3%B3n-v1.0.0--estable-3b82f6?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/Versi%C3%B3n-v2.3.0--estable-3b82f6?style=for-the-badge" alt="Version">
   <img src="https://img.shields.io/badge/N%C3%BAcleo-Rust-black?style=for-the-badge&logo=rust" alt="Rust">
   <img src="https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge" alt="License">
   <img src="https://img.shields.io/badge/IA-Nativa-f3c75f?style=for-the-badge" alt="AI Native">
@@ -15,13 +15,12 @@
 
 **NeuroCode**  es un lenguaje de programación de alto rendimiento construido en **Rust**, diseñado para automatizar procesos, integrar Inteligencia Artificial de forma nativa y permitir el desarrollo de software complejo utilizando una sintaxis expresiva en **español**.
 
-## ✨ Características Principales
-
 - 🧠 **IA Nativa**: Consulta LLMs (Ollama, Anthropic, etc.) directamente con la función `ia()`.
-- 🏹 **Modo Cazador**: Importa y usa cualquier librería de Python de forma transparente.
-- ⚡ **Alto Rendimiento**: Motor de ejecución escrito en Rust, rápido y seguro.
-- 🛡️ **Autocuración**: El "Guardián" integrado analiza y repara errores de código automáticamente usando IA.
-- 🌐 **Servidor Web & Async**: Crea APIs web con un runtime asíncrono moderno.
+- ⚡ **Reactividad Nativa**: Sistema de observadores con `reactivo` y `cuando...cambie`.
+- 🧬 **Herencia de Clases**: Programación orientada a objetos avanzada con `hereda` y `super()`.
+- 📦 **Modularidad**: Gestión de módulos limpia con `importar` y `exportar`.
+- 🏹 **Modo Depredador**: Importa y usa cualquier librería de Python de forma transparente.
+- 🛡️ **Autocuración**: El "Guardián" integrado analiza y repara errores automáticamente.
 
 ---
 
@@ -47,23 +46,24 @@
 
 ---
 
-## 💻 Código de Ejemplo
-
-Así de simple es crear lógica potente en NeuroCode:
-
-```aquila
-// Un script que usa lógica y IA
-funcion saludar(nombre) {
-    retornar "Hola, " + nombre + ". ¿En qué puedo ayudarte?"
+```neurocode
+// 1. Reactividad Nativa
+reactivo precio = 100
+cuando precio cambie {
+    imprimir(">>> Alerta: El precio subió a", precio)
 }
+precio = 150 // Dispara la alerta automáticamente
 
-imprimir(saludar("Desarrollador"))
-
-intentar {
-    idea = ia("Dame una idea breve para un agente de automatización")
-    imprimir("Sugerencia de la IA:", idea)
-} capturar error {
-    imprimir("No pude conectar con el cerebro:", error)
+// 2. Herencia y IA
+clase IA_Agente hereda ServidorWeb {
+    crear(puerto) {
+        super(puerto)
+    }
+    
+    asincrono funcion pensar(prompt) {
+        idea = esperar ia(prompt)
+        imprimir("🧠", idea)
+    }
 }
 ```
 
