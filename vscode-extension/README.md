@@ -1,87 +1,70 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/juanmanuel767/Neuro-code/main/website/assets/logo.png" width="300" alt="NeuroCode Logo">
+  <img src="https://raw.githubusercontent.com/juanmanuel767/Neuro-code/main/website/assets/logo.png" width="220" alt="NeuroCode Logo">
 </p>
 
-# NeuroCode: El Lenguaje IA-Nativo en Español
+<h1 align="center">🧠 NeuroCode: Programa con el Cerebro de la IA</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Versi%C3%B3n-v1.0.0--estable-3b82f6?style=for-the-badge" alt="Version">
-  <img src="https://img.shields.io/badge/N%C3%BAcleo-Rust-black?style=for-the-badge&logo=rust" alt="Rust">
-  <img src="https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge" alt="License">
-  <img src="https://img.shields.io/badge/IA-Nativa-f3c75f?style=for-the-badge" alt="AI Native">
+  <img src="https://img.shields.io/badge/Versi%C3%B3n-2.2.0-3b82f6?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/IA_Nativa-Activada-f3c75f?style=for-the-badge" alt="AI Native">
+  <img src="https://img.shields.io/badge/Espa%C3%B1ol-100%25-green?style=for-the-badge" alt="Idioma">
 </p>
 
----
+### ¿Por qué programar en inglés cuando la Inteligencia Artificial habla tu idioma?
 
-**NeuroCode**  es un lenguaje de programación de alto rendimiento construido en **Rust**, diseñado para automatizar procesos, integrar Inteligencia Artificial de forma nativa y permitir el desarrollo de software complejo utilizando una sintaxis expresiva en **español**.
-
-## ✨ Características Principales
-
-- 🧠 **IA Nativa**: Consulta LLMs (Ollama, Anthropic, etc.) directamente con la función `ia()`.
-- 🏹 **Modo Cazador**: Importa y usa cualquier librería de Python de forma transparente.
-- ⚡ **Alto Rendimiento**: Motor de ejecución escrito en Rust, rápido y seguro.
-- 🛡️ **Autocuración**: El "Guardián" integrado analiza y repara errores de código automáticamente usando IA.
-- 🌐 **Servidor Web & Async**: Crea APIs web con un runtime asíncrono moderno.
+Bienvenido al soporte oficial para **NeuroCode**, el primer lenguaje de programación de alto rendimiento orientado al futuro y completamente escrito en español. Esta extensión transforma tu Visual Studio Code en la **Torre de Control** para desarrollar ecosistemas neuronales, conectar LLMs en tiempo real y ejecutar lógica cruda.
 
 ---
 
-## 🚀 Despegue Rápido
+## ⚡ ¿Qué superpoderes te da esta extensión?
 
-### Requisitos
-- [Rust](https://rustup.rs/) (v1.75 o superior)
+### 🎨 Resaltado de Sintaxis Dinámico (Syntax Highlighting)
+Dale vida a tu código. Esta extensión entiende perfectamente la anatomía de NeuroCode, resaltando con precisión palabras maestras como `funcion`, `mientras`, `intentar`, `capturar` e incluso las temibles estructuras asíncronas.
 
-### Instalación desde Código Fuente
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/juanmanuel767/Neuro-code.git
-   cd Neuro-code
-   ```
-2. Compila el intérprete:
-   ```bash
-   cargo build --release
-   ```
-3. (Opcional) Mueve el binario a tu path o úsalo directamente:
-   ```bash
-   ./target/release/neurocode mi_script.neuro
-   ```
+### 🧩 Snippets Inteligentes
+Acelera tu velocidad de escritura al 300%. Solo escribe el comienzo del bloque, presiona *Tab* y deja que la extensión construya bucles `mientras`, peticiones asíncronas, y estructuras de variables complejas en una fracción de segundo.
+
+### 🌐 ¡NUEVO! Integración Web Playground (v2.2.0)
+Nuestra última actualización te permite desarrollar y depurar de forma interactiva con soporte completo al operador Módulo (`%`). Experimenta una fluidez absoluta sin necesidad de compilar. 
+
+### 🤖 Soporte Claro de Palabras IA
+Identifica visualmente las llamadas crípticas al cerebro matricial como `ia()`, `ia_generar_codigo()` o `depredactor`, de modo que siempre sepas dónde se inyecta el conocimiento del modelo en tu script.
 
 ---
 
-## 💻 Código de Ejemplo
+## 💻 El Arte de NeuroCode en Acción
 
-Así de simple es crear lógica potente en NeuroCode:
+Mira lo natural que se vuelve crear código complejo:
 
-```aquila
-// Un script que usa lógica y IA
-funcion saludar(nombre) {
-    retornar "Hola, " + nombre + ". ¿En qué puedo ayudarte?"
+```neurocode
+// Consulta una red neuronal con un solo comando nativo
+funcion analizar_mercado() {
+    intentar {
+        resultado = ia("Dame 3 tendencias tecnológicas del año actual")
+        imprimir("🧠 Visión de la máquina:", resultado)
+    } capturar error {
+        imprimir("❌ Enlace neuronal perdido:", error)
+    }
 }
 
-imprimir(saludar("Desarrollador"))
-
-intentar {
-    idea = ia("Dame una idea breve para un agente de automatización")
-    imprimir("Sugerencia de la IA:", idea)
-} capturar error {
-    imprimir("No pude conectar con el cerebro:", error)
-}
+analizar_mercado()
 ```
 
 ---
 
-## 📚 Documentación
+## 🕹️ Atajos de Teclado Productivos
 
-- [📖 Guía de Sintaxis](docs/guia-sintaxis.md): Aprende a programar en NeuroCode.
-- [📂 Ejemplos de Integración](docs/ejemplos/):
-    - [FizzBuzz](docs/ejemplos/fizzbuzz.neuro)
-    - [Fibonacci](docs/ejemplos/fibonacci.neuro)
-    - [Encontrar el Mayor](docs/ejemplos/mayor.neuro)
-
----
-
-## 👤 El Visionario
-**Juan Manuel Peralta**  
-*Arquitecto Maestro de NeuroCode*
+Hemos integrado la extensión a tus dedos:
+- `Ctrl + F5`: Ejecuta directamente tu script actual en el intérprete de terminal.
+- `Ctrl + Shift + F5`: Ejecuta la suite de Testing Autónoma sobre tus funciones.
+*(Asegúrate de tener el motor binario de NeuroCode en el PATH global de tu sistema)*.
 
 ---
-<p align="center">Forjado en Rust · IA Nativa · Python FFI. © 2026 NeuroCode Labs.</p>
+
+## 👤 El Visionario Detrás del Código
+Diseñado, orquestado y creado por **Juan Manuel Peralta (@juanmanuel767)**.  
+*Arquitecto de Sistemas & Pionero en lenguajes IA-nativos.*
+
+> *"El código no solo debe compilar. Debe pensar."*
+
+[⭐️ Apoya el proyecto en GitHub dándonos una estrella](https://github.com/juanmanuel767/Neuro-code)

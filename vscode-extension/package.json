@@ -1,9 +1,9 @@
 {
-    "name": "neurocode-lang",
-    "displayName": "NeuroCode - Lenguaje IA-Nativo",
+    "name": "neurocode-ia",
+    "displayName": "NeuroCode · Lenguaje de Programación IA-Nativo",
     "description": "Syntax highlighting, snippets and tools for NeuroCode, the AI-native programming language in Spanish",
     "version": "2.2.0",
-    "publisher": "neurocodeoficial",
+    "publisher": "neurocode-ia",
     "license": "MIT",
     "icon": "icon.png",
     "engines": {
