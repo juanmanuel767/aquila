@@ -13,7 +13,7 @@
 
 ---
 
-**NeuroCode** (anteriormente Aquila) es un lenguaje de programación de alto rendimiento construido en **Rust**, diseñado para automatizar procesos, integrar Inteligencia Artificial de forma nativa y permitir el desarrollo de software complejo utilizando una sintaxis expresiva en **español**.
+**NeuroCode**  es un lenguaje de programación de alto rendimiento construido en **Rust**, diseñado para automatizar procesos, integrar Inteligencia Artificial de forma nativa y permitir el desarrollo de software complejo utilizando una sintaxis expresiva en **español**.
 
 ## ✨ Características Principales
 
