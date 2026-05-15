@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/juanmanuel767/aquila/main/website/assets/logo.png" width="300" alt="NeuroCode Logo">
+  <img src="https://raw.githubusercontent.com/juanmanuel767/Neuro-code/main/website/assets/logo.png" width="300" alt="NeuroCode Logo">
 </p>
 
 # NeuroCode: El Lenguaje IA-Nativo en Español
@@ -33,7 +33,7 @@
 ### Instalación desde Código Fuente
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/neurocode.git
+   git clone https://github.com/juanmanuel767/Neuro-code.git
    cd neurocode
    ```
 2. Compila el intérprete:
