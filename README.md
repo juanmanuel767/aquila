@@ -34,7 +34,7 @@
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/juanmanuel767/Neuro-code.git
-   cd neurocode
+   cd Neuro-code
    ```
 2. Compila el intérprete:
    ```bash
