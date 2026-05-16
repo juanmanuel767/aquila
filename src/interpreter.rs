@@ -1712,6 +1712,114 @@ impl Interpreter {
                     }
                 }
 
+                // Métodos nativos de Lista
+                if let RuntimeValue::List(items_arc) = &callee_val {
+                    if method == "mapa" {
+                        if let Some(func_val) = eval_args.get(0) {
+                            let mut results = Vec::new();
+                            let items = items_arc.lock().unwrap().clone();
+                            for item in items {
+                                if let RuntimeValue::Function(params, return_type, body) = func_val {
+                                    let call_env = Arc::new(Mutex::new(Environment::new_with_parent(Arc::clone(env))));
+                                    bind_params(params, &vec![item], &call_env)?;
+                                    let ret = self.execute_block(body.clone(), &call_env)?.unwrap_or(RuntimeValue::Null);
+                                    if let Some(type_name) = return_type {
+                                        validate_runtime_type(&ret, type_name)?;
+                                    }
+                                    results.push(ret);
+                                } else {
+                                    return Err("El argumento de 'mapa' debe ser una función normal.".into());
+                                }
+                            }
+                            return Ok(RuntimeValue::List(Arc::new(Mutex::new(results))));
+                        }
+                        return Err("El método 'mapa' requiere una función como argumento.".into());
+                    }
+                    if method == "filtrar" {
+                        if let Some(func_val) = eval_args.get(0) {
+                            let mut results = Vec::new();
+                            let items = items_arc.lock().unwrap().clone();
+                            for item in items {
+                                if let RuntimeValue::Function(params, _, body) = func_val {
+                                    let call_env = Arc::new(Mutex::new(Environment::new_with_parent(Arc::clone(env))));
+                                    bind_params(params, &vec![item.clone()], &call_env)?;
+                                    let ret = self.execute_block(body.clone(), &call_env)?.unwrap_or(RuntimeValue::Null);
+                                    if self.is_truthy(&ret) {
+                                        results.push(item);
+                                    }
+                                } else {
+                                    return Err("El argumento de 'filtrar' debe ser una función normal.".into());
+                                }
+                            }
+                            return Ok(RuntimeValue::List(Arc::new(Mutex::new(results))));
+                        }
+                        return Err("El método 'filtrar' requiere una función como argumento.".into());
+                    }
+                    if method == "reducir" {
+                        if eval_args.len() < 2 {
+                            return Err("El método 'reducir' requiere una función y un valor inicial.".into());
+                        }
+                        if let (Some(func_val), Some(init_val)) = (eval_args.get(0), eval_args.get(1)) {
+                            let mut acc = init_val.clone();
+                            let items = items_arc.lock().unwrap().clone();
+                            for item in items {
+                                if let RuntimeValue::Function(params, return_type, body) = func_val {
+                                    let call_env = Arc::new(Mutex::new(Environment::new_with_parent(Arc::clone(env))));
+                                    // bind accumulated value AND current item
+                                    bind_params(params, &vec![acc.clone(), item], &call_env)?;
+                                    acc = self.execute_block(body.clone(), &call_env)?.unwrap_or(RuntimeValue::Null);
+                                    if let Some(type_name) = return_type {
+                                        validate_runtime_type(&acc, type_name)?;
+                                    }
+                                } else {
+                                    return Err("El primer argumento de 'reducir' debe ser una función normal.".into());
+                                }
+                            }
+                            return Ok(acc);
+                        }
+                    }
+                    if method == "ordenar" {
+                        let mut items = items_arc.lock().unwrap().clone();
+                        items.sort_by(|a, b| {
+                            match (a, b) {
+                                (RuntimeValue::Int(x), RuntimeValue::Int(y)) => x.cmp(y),
+                                (RuntimeValue::Number(x), RuntimeValue::Number(y)) => x.partial_cmp(y).unwrap_or(std::cmp::Ordering::Equal),
+                                (RuntimeValue::Text(x), RuntimeValue::Text(y)) => x.cmp(y),
+                                (RuntimeValue::Int(x), RuntimeValue::Number(y)) => (*x as f64).partial_cmp(y).unwrap_or(std::cmp::Ordering::Equal),
+                                (RuntimeValue::Number(x), RuntimeValue::Int(y)) => x.partial_cmp(&(*y as f64)).unwrap_or(std::cmp::Ordering::Equal),
+                                _ => std::cmp::Ordering::Equal,
+                            }
+                        });
+                        *items_arc.lock().unwrap() = items;
+                        return Ok(callee_val.clone());
+                    }
+                    if method == "reverso" {
+                        let mut items = items_arc.lock().unwrap().clone();
+                        items.reverse();
+                        *items_arc.lock().unwrap() = items;
+                        return Ok(callee_val.clone());
+                    }
+                    if method == "buscar" {
+                        if let Some(func_val) = eval_args.get(0) {
+                            let items = items_arc.lock().unwrap().clone();
+                            for item in items {
+                                if let RuntimeValue::Function(params, _, body) = func_val {
+                                    let call_env = Arc::new(Mutex::new(Environment::new_with_parent(Arc::clone(env))));
+                                    bind_params(params, &vec![item.clone()], &call_env)?;
+                                    let ret = self.execute_block(body.clone(), &call_env)?.unwrap_or(RuntimeValue::Null);
+                                    if self.is_truthy(&ret) {
+                                        return Ok(item);
+                                    }
+                                } else {
+                                    return Err("El argumento de 'buscar' debe ser una función normal.".into());
+                                }
+                            }
+                            return Ok(RuntimeValue::Null);
+                        }
+                        return Err("El método 'buscar' requiere una función como argumento.".into());
+                    }
+                }
+
                 // Acceso a propiedad u invocación de objeto instanciado
                 if let RuntimeValue::Instance(_, props_arc, class_box) = &callee_val {
                     if eval_args.is_empty() {
@@ -2220,6 +2328,55 @@ mod tests {
         
         let res = interpreter.global_env.lock().unwrap().get("x").unwrap();
         assert_eq!(res, RuntimeValue::Int(10));
+    }
+
+    #[test]
+    fn test_list_methods() {
+        let code = "
+            numeros = [1, 2, 3, 4]
+            mapa_res = numeros.mapa(funcion(n) { retornar n * 2 })
+            filtrar_res = numeros.filtrar(funcion(n) { retornar n > 2 })
+            reducir_res = numeros.reducir(funcion(a, b) { retornar a + b }, 0)
+            
+            numeros.reverso()
+            reverso_res = numeros[0]
+            
+            numeros.ordenar()
+            orden_res = numeros[0]
+            
+            buscar_res = numeros.buscar(funcion(n) { retornar n == 3 })
+        ";
+        let tokens = crate::lexer::tokenize(code);
+        let statements = crate::parser::parse(tokens).unwrap();
+        let mut interpreter = Interpreter::new();
+        interpreter.interpret(statements).unwrap();
+        
+        let env = interpreter.global_env.lock().unwrap();
+        // Verificar map
+        if let RuntimeValue::List(l) = env.get("mapa_res").unwrap() {
+            let items = l.lock().unwrap();
+            assert_eq!(items[0], RuntimeValue::Int(2));
+            assert_eq!(items[3], RuntimeValue::Int(8));
+        } else { panic!("mapa_res is not a list") }
+        
+        // Verificar filter
+        if let RuntimeValue::List(l) = env.get("filtrar_res").unwrap() {
+            let items = l.lock().unwrap();
+            assert_eq!(items.len(), 2);
+            assert_eq!(items[0], RuntimeValue::Int(3));
+        } else { panic!("filtrar_res is not a list") }
+        
+        // Verificar reduce
+        assert_eq!(env.get("reducir_res").unwrap(), RuntimeValue::Int(10));
+        
+        // Verificar reverso (era 1,2,3,4, revertido es 4,3,2,1)
+        assert_eq!(env.get("reverso_res").unwrap(), RuntimeValue::Int(4));
+        
+        // Verificar ordenar (ordenado debe volver a 1,2,3,4)
+        assert_eq!(env.get("orden_res").unwrap(), RuntimeValue::Int(1));
+        
+        // Verificar buscar
+        assert_eq!(env.get("buscar_res").unwrap(), RuntimeValue::Int(3));
     }
 
     fn run_code_expr(expr: &str) -> RuntimeValue {
